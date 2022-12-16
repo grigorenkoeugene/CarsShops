@@ -32,6 +32,16 @@
   </div>
 
   <div>
+    <%= form.label :odometer, style: "display: block" %>
+    <%= form.number_field :odometer %>
+  </div>
+
+  <div>
+    <%= form.label :shop, style: "display: block"%>
+    <%= form.select :shop_id, @shops %>
+  </div> 
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

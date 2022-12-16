@@ -1,0 +1,30 @@
+<div id="<%= dom_id shop %>">
+  <p>
+    <strong>Address:</strong>
+    <%= shop.address %>
+  </p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= shop.name %>
+  </p>
+  
+  <p>
+    <strong>Cars count:</strong>
+    <%= shop.cars_count %>
+  </p>
+
+  <p>
+    <strong>Country:</strong>
+    <% country = shop.name %>
+     <%= country.split()[-1] %>
+  </p>
+
+  <p>
+    <strong>Cars:</strong>
+    <% shop.cars.each do |car| %>
+    <p><%= car.make %> <%= car.model%> <%= car.year %></p>
+    <%end%>
+  </p>
+
+</div>

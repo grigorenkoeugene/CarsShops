@@ -12,6 +12,7 @@ class CarsController < ApplicationController
 
   # GET /cars/new
   def new
+    @shops = Shop.all.map { |shop| [shop.name, shop.id] }
     @car = Car.new
   end
 
@@ -36,7 +37,7 @@ class CarsController < ApplicationController
 
   # PATCH/PUT /cars/1 or /cars/1.json
   def update
-    respond_to do |format|
+     respond_to do |format|
       if @car.update(car_params)
         format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
         format.json { render :show, status: :ok, location: @car }
@@ -65,6 +66,6 @@ class CarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def car_params
-      params.require(:car).permit(:make, :model, :year, :price)
+      params.require(:car).permit(:make, :model, :year, :price, :odometer, :shop_id)
     end
 end
