@@ -1,0 +1,19 @@
+<%= form_with(url: login_user_path) do |form|%>
+  <% if @error %>
+    <div style = "color: red">
+      <h2>no user with such email/password</h2>
+    </div>
+  <%end%>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <%= form.submit %>
+<%end%>

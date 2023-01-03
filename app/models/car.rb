@@ -3,12 +3,16 @@ class Car < ApplicationRecord
   validates :year, numericality: { less_than_or_equal_to: Time.now.year }
   validates :odometer, numericality: {greater_than: 0 }
   belongs_to :shop
-
-  scope :bmw, -> { where(make: "bmw")} 
+  belongs_to :user 
 
   after_create do 
     shop.cars_count += 1
-    shop.save
+    shop.save 
   end
 
+  after_destroy do 
+    shop.cars_count -= 1
+    shop.save
+  end
+ 
 end
