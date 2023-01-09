@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+ a {
+  text-decoration: none;
+ }
+
+ .authorization {
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border:1px solid black;
+  border-radius: 10px;
+  width: 120px;
+  height: 120px;
+  background: #7dc9d0;
+}
+
+.authorization p {
+  text-align: center;
+}

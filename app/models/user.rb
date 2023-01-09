@@ -9,7 +9,9 @@ class User < ApplicationRecord
   (?=.*[:])
 /x
 
-  validates :first_name, :last_name, :email, :password, presence: true
+  validates :first_name, :last_name, :email, :password_digest, presence: true
   validates :email, format: {with: /@/, message: "hasn't @"}, uniqueness: true
-  validates :password, format: {with: PASSWORD_FORMAT}
+  validates :password_digest, format: {with: PASSWORD_FORMAT}
+  has_secure_password
+
 end

@@ -40,21 +40,24 @@ class CarsController < ApplicationController
 
   # PATCH/PUT /cars/1 or /cars/1.json
   def update
-    
-     respond_to do |format|
-      if @car.update(car_params)
-        format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
-        format.json { render :show, status: :ok, location: @car }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
+    if @car.user_id == session[:current_user_id] || @user.admin == true 
+      respond_to do |format|
+        if @car.update(car_params)
+          format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
+          format.json { render :show, status: :ok, location: @car }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @car.errors, status: :unprocessable_entity }
+        end
       end
+    else
+
     end
   end
 
   # DELETE /cars/1 or /cars/1.json
   def destroy
-    if @car.user_id == session[:current_user_id]
+    if @car.user_id == session[:current_user_id] || @user.admin == true 
       @car.destroy
 
       respond_to do |format|

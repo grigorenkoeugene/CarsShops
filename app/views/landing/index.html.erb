@@ -1,3 +1,11 @@
-<div>
-User 
+<div class="authorization">
+  <% if @current_user %>
+      welcom,  <%= @current_user.first_name %>
+      <%= button_to "logout", logout_user_path, method: :delete%>
+      <%= link_to "cars", cars_path%>
+      <%= link_to "shops", shops_path%>
+    <% else %>
+      <p><%= link_to "sign up", sign_up_user_path%></p>
+      <p><%= link_to "sign in", sign_in_user_path%></p>
+  <%end%> 
 </div>
